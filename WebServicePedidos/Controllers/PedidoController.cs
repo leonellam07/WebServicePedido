@@ -9,6 +9,7 @@ using WebServicePedidos.Models;
 
 namespace WebServicePedidos.Controllers
 {
+    [Authorize]
     public class PedidoController : ApiController
     {
         [HttpGet]

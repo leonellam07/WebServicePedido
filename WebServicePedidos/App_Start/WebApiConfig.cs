@@ -1,7 +1,9 @@
-﻿using System;
+﻿using System.Web.Http.Cors;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using WebServicePedidos.Middlewares;
 
 namespace WebServicePedidos
 {
@@ -10,6 +12,7 @@ namespace WebServicePedidos
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            config.MessageHandlers.Add(new TokenValidatorHandler());
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -19,6 +22,10 @@ namespace WebServicePedidos
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            var atributosCors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(atributosCors);
+
         }
     }
 }

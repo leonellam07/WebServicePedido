@@ -9,5 +9,8 @@ namespace WebServicePedidos.Models
     {
         public string Alamacen { get; set; }
         public int Existencia { get; set; }
+        public bool Eliminar { get; set; }
+        public bool Modificar { get; set; }
+        public bool Agregar { get; set; }
     }
 }
